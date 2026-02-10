@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Plus, Pencil, AlertTriangle, Package, Search, TrendingUp, TrendingDown, History, Eye } from 'lucide-react';
 
@@ -27,33 +27,34 @@ interface StockHistory {
 type ModalType = 'add' | 'edit' | 'stockIn' | 'stockOut' | 'detail' | 'history' | null;
 
 export default function InventoryManagement() {
+  // TODO: 재고 목록 API 호출
+  /*
   const [inventory, setInventory] = useState<InventoryItem[]>([]);
+  
+  const fetchInventory = async () => {
+    const response = await fetch('YOUR_API_URL/admin/inventory');
+    const data = await response.json();
+    setInventory(data);
+  };
+  
+  useEffect(() => {
+    fetchInventory();
+  }, []);
+  */
+  
+  // 임시 데이터
+  const [inventory, setInventory] = useState<InventoryItem[]>([
+    { id: 1, name: '아라비카 원두', category: '원두', quantity: 15, unit: 'kg', minQuantity: 10, lastUpdated: '2024-02-06', supplier: 'A원두상사' },
+    { id: 2, name: '우유', category: '유제품', quantity: 8, unit: 'L', minQuantity: 20, lastUpdated: '2024-02-06', supplier: 'B유통' },
+    { id: 3, name: '종이컵 (HOT)', category: '소모품', quantity: 500, unit: '개', minQuantity: 200, lastUpdated: '2024-02-05' },
+    { id: 4, name: '시럽 (바닐라)', category: '시럽', quantity: 3, unit: '병', minQuantity: 5, lastUpdated: '2024-02-05' },
+    { id: 5, name: '휘핑크림', category: '유제품', quantity: 25, unit: '개', minQuantity: 10, lastUpdated: '2024-02-06' },
+  ]);
+  
   const [searchTerm, setSearchTerm] = useState('');
   const [modalType, setModalType] = useState<ModalType>(null);
   const [selectedItem, setSelectedItem] = useState<InventoryItem | null>(null);
   const [stockHistory, setStockHistory] = useState<StockHistory[]>([]);
-
-  const fetchInventory = async () => {
-    // TODO: 재고 목록 API 호출
-    /*
-    const response = await fetch('YOUR_API_URL/admin/inventory');
-    const data = await response.json();
-    setInventory(data);
-    */
-    
-    // 임시 데이터
-    setInventory([
-      { id: 1, name: '아라비카 원두', category: '원두', quantity: 15, unit: 'kg', minQuantity: 10, lastUpdated: '2024-02-06', supplier: 'A원두상사' },
-      { id: 2, name: '우유', category: '유제품', quantity: 8, unit: 'L', minQuantity: 20, lastUpdated: '2024-02-06', supplier: 'B유통' },
-      { id: 3, name: '종이컵 (HOT)', category: '소모품', quantity: 500, unit: '개', minQuantity: 200, lastUpdated: '2024-02-05' },
-      { id: 4, name: '시럽 (바닐라)', category: '시럽', quantity: 3, unit: '병', minQuantity: 5, lastUpdated: '2024-02-05' },
-      { id: 5, name: '휘핑크림', category: '유제품', quantity: 25, unit: '개', minQuantity: 10, lastUpdated: '2024-02-06' },
-    ]);
-  };
-
-  useEffect(() => {
-    fetchInventory();
-  }, []);
 
   const handleStockIn = async (itemId: number, quantity: number) => {
     // TODO: 재고 입고 API 호출
@@ -109,7 +110,8 @@ export default function InventoryManagement() {
     
     setModalType(null);
     setSelectedItem(null);
-    fetchInventory();
+    // TODO: API 저장 후 목록 다시 불러오기
+    // fetchInventory();
   };
 
   const fetchStockHistory = async () => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Plus, Pencil, Trash2 } from 'lucide-react';
 
@@ -14,20 +14,26 @@ interface Notice {
 }
 
 export default function NoticeManagement() {
+  // TODO: 공지사항 목록 API 호출
+  /*
   const [notices, setNotices] = useState<Notice[]>([]);
-
-  const fetchNotices = async () => {
-    // TODO: 공지사항 목록 API 호출
-    setNotices([
-      { id: 1, title: '신메뉴 출시 안내', category: '신메뉴', content: '크림 브륄레 라떼 출시', createdAt: '2024-02-01', views: 150 },
-      { id: 2, title: '설 연휴 영업시간 안내', category: '공지', content: '설 연휴 영업시간...', createdAt: '2024-01-28', views: 89 },
-    ]);
-  };
-
+  
+  const fetchNotices = useCallback(async () => {
+    const response = await fetch('YOUR_API_URL/admin/notices');
+    const data = await response.json();
+    setNotices(data);
+  }, []);
+  
   useEffect(() => {
     fetchNotices();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchNotices]);
+  */
+  
+  // 임시 데이터
+  const [notices, setNotices] = useState<Notice[]>([
+    { id: 1, title: '신메뉴 출시 안내', category: '신메뉴', content: '크림 브륄레 라떼 출시', createdAt: '2024-02-01', views: 150 },
+    { id: 2, title: '설 연휴 영업시간 안내', category: '공지', content: '설 연휴 영업시간...', createdAt: '2024-01-28', views: 89 },
+  ]);
 
   const handleDelete = (id: number) => {
     if (!confirm('삭제하시겠습니까?')) return;

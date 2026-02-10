@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Plus, Pencil, Trash2, Search } from 'lucide-react';
 
@@ -15,32 +15,32 @@ interface MenuItem {
 }
 
 export default function MenuManagement() {
+  // TODO: 메뉴 목록 API 호출
+  /*
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [showModal, setShowModal] = useState(false);
-  const [editingItem, setEditingItem] = useState<MenuItem | null>(null);
-
-  const fetchMenuItems = async () => {
-    // TODO: 메뉴 목록 API 호출
-    /*
+  
+  const fetchMenuItems = useCallback(async () => {
     const response = await fetch('YOUR_API_URL/admin/menu');
     const data = await response.json();
     setMenuItems(data);
-    */
-    
-    // 임시 데이터
-    setMenuItems([
-      { id: 1, name: '시그니처 아메리카노', category: 'coffee', price: 4500, description: '깊고 진한 에스프레소의 풍미', available: true },
-      { id: 2, name: '수월 라떼', category: 'coffee', price: 5000, description: '부드러운 우유와 에스프레소의 조화', available: true },
-      { id: 3, name: '크림 브륄레 라떼', category: 'signature', price: 6500, description: '카라멜라이징한 달콤한 크림 토핑', available: true },
-      { id: 4, name: '말차 라떼', category: 'non-coffee', price: 6000, description: '프리미엄 일본산 말차', available: false },
-    ]);
-  };
-
+  }, []);
+  
   useEffect(() => {
     fetchMenuItems();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchMenuItems]);
+  */
+  
+  // 임시 데이터
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([
+    { id: 1, name: '시그니처 아메리카노', category: 'coffee', price: 4500, description: '깊고 진한 에스프레소의 풍미', available: true },
+    { id: 2, name: '수월 라떼', category: 'coffee', price: 5000, description: '부드러운 우유와 에스프레소의 조화', available: true },
+    { id: 3, name: '크림 브륄레 라떼', category: 'signature', price: 6500, description: '카라멜라이징한 달콤한 크림 토핑', available: true },
+    { id: 4, name: '말차 라떼', category: 'non-coffee', price: 6000, description: '프리미엄 일본산 말차', available: false },
+  ]);
+  
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [editingItem, setEditingItem] = useState<MenuItem | null>(null);
 
   const handleDelete = async (id: number) => {
     if (!confirm('정말 삭제하시겠습니까?')) return;
@@ -58,7 +58,7 @@ export default function MenuManagement() {
     setShowModal(true);
   };
 
-  const handleSave = async (formData: Partial<MenuItem>) => {
+  const handleSave = async () => {
     // TODO: 메뉴 생성/수정 API 호출
     /*
     if (editingItem) {
@@ -76,7 +76,8 @@ export default function MenuManagement() {
     
     setShowModal(false);
     setEditingItem(null);
-    fetchMenuItems();
+    // TODO: API 저장 후 목록 다시 불러오기
+    // fetchMenuItems();
   };
 
   const filteredItems = menuItems.filter(item =>
@@ -186,14 +187,8 @@ export default function MenuManagement() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                const formData = new FormData(e.currentTarget);
-                handleSave({
-                  name: formData.get('name') as string,
-                  category: formData.get('category') as string,
-                  price: Number(formData.get('price')),
-                  description: formData.get('description') as string,
-                  available: formData.get('available') === 'on',
-                });
+                // TODO: 폼 데이터를 API로 전송
+                handleSave();
               }}
               className="space-y-4"
             >

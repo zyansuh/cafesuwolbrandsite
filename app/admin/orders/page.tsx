@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Search } from 'lucide-react';
 
@@ -14,31 +14,31 @@ interface Order {
 }
 
 export default function OrderManagement() {
+  // TODO: 주문 목록 API 호출
+  /*
   const [orders, setOrders] = useState<Order[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterStatus, setFilterStatus] = useState<string>('all');
-
-  const fetchOrders = async () => {
-    // TODO: 주문 목록 API 호출
-    /*
+  
+  const fetchOrders = useCallback(async () => {
     const response = await fetch('YOUR_API_URL/admin/orders');
     const data = await response.json();
     setOrders(data);
-    */
-    
-    // 임시 데이터
-    setOrders([
-      { id: 'ORD-001', customerName: '홍길동', items: '아메리카노, 카페라떼', total: 9500, status: 'completed', createdAt: '2024-02-06 10:30' },
-      { id: 'ORD-002', customerName: '김철수', items: '시그니처 커피', total: 6500, status: 'preparing', createdAt: '2024-02-06 11:15' },
-      { id: 'ORD-003', customerName: '이영희', items: '말차라떼, 크루아상', total: 9000, status: 'pending', createdAt: '2024-02-06 11:45' },
-      { id: 'ORD-004', customerName: '박민수', items: '콜드브루', total: 5500, status: 'completed', createdAt: '2024-02-06 09:20' },
-    ]);
-  };
-
+  }, []);
+  
   useEffect(() => {
     fetchOrders();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchOrders]);
+  */
+  
+  // 임시 데이터
+  const [orders, setOrders] = useState<Order[]>([
+    { id: 'ORD-001', customerName: '홍길동', items: '아메리카노, 카페라떼', total: 9500, status: 'completed', createdAt: '2024-02-06 10:30' },
+    { id: 'ORD-002', customerName: '김철수', items: '시그니처 커피', total: 6500, status: 'preparing', createdAt: '2024-02-06 11:15' },
+    { id: 'ORD-003', customerName: '이영희', items: '말차라떼, 크루아상', total: 9000, status: 'pending', createdAt: '2024-02-06 11:45' },
+    { id: 'ORD-004', customerName: '박민수', items: '콜드브루', total: 5500, status: 'completed', createdAt: '2024-02-06 09:20' },
+  ]);
+  
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState<string>('all');
 
   const updateOrderStatus = async (orderId: string, newStatus: Order['status']) => {
     // TODO: 주문 상태 업데이트 API 호출

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Search, Mail, Phone } from 'lucide-react';
 
@@ -16,30 +16,30 @@ interface User {
 }
 
 export default function UserManagement() {
+  // TODO: 회원 목록 API 호출
+  /*
   const [users, setUsers] = useState<User[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const fetchUsers = async () => {
-    // TODO: 회원 목록 API 호출
-    /*
+  
+  const fetchUsers = useCallback(async () => {
     const response = await fetch('YOUR_API_URL/admin/users');
     const data = await response.json();
     setUsers(data);
-    */
-    
-    // 임시 데이터
-    setUsers([
-      { id: 1, name: '홍길동', email: 'hong@email.com', phone: '010-1234-5678', joinDate: '2024-01-15', totalOrders: 15, totalSpent: 125000, status: 'active' },
-      { id: 2, name: '김철수', email: 'kim@email.com', phone: '010-2345-6789', joinDate: '2024-01-20', totalOrders: 8, totalSpent: 68000, status: 'active' },
-      { id: 3, name: '이영희', email: 'lee@email.com', phone: '010-3456-7890', joinDate: '2024-02-01', totalOrders: 3, totalSpent: 25000, status: 'active' },
-      { id: 4, name: '박민수', email: 'park@email.com', phone: '010-4567-8901', joinDate: '2023-12-10', totalOrders: 42, totalSpent: 356000, status: 'inactive' },
-    ]);
-  };
-
+  }, []);
+  
   useEffect(() => {
     fetchUsers();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchUsers]);
+  */
+  
+  // 임시 데이터
+  const [users] = useState<User[]>([
+    { id: 1, name: '홍길동', email: 'hong@email.com', phone: '010-1234-5678', joinDate: '2024-01-15', totalOrders: 15, totalSpent: 125000, status: 'active' },
+    { id: 2, name: '김철수', email: 'kim@email.com', phone: '010-2345-6789', joinDate: '2024-01-20', totalOrders: 8, totalSpent: 68000, status: 'active' },
+    { id: 3, name: '이영희', email: 'lee@email.com', phone: '010-3456-7890', joinDate: '2024-02-01', totalOrders: 3, totalSpent: 25000, status: 'active' },
+    { id: 4, name: '박민수', email: 'park@email.com', phone: '010-4567-8901', joinDate: '2023-12-10', totalOrders: 42, totalSpent: 356000, status: 'inactive' },
+  ]);
+  
+  const [searchTerm, setSearchTerm] = useState('');
 
   const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
