@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Plus, Pencil, MapPin } from 'lucide-react';
 
@@ -14,14 +14,21 @@ interface Store {
 }
 
 export default function StoreManagement() {
+  // TODO: 매장 목록 API 호출
+  /*
   const [stores, setStores] = useState<Store[]>([]);
-
+  
   useEffect(() => {
-    // TODO: 매장 목록 API 호출
-    setStores([
-      { id: 1, name: '카페수월 강남점', address: '서울시 강남구 테헤란로 123', phone: '02-1234-5678', hours: '평일 08:00-22:00, 주말 10:00-20:00', status: 'open' },
-    ]);
+    fetch('YOUR_API_URL/admin/stores')
+      .then(res => res.json())
+      .then(data => setStores(data));
   }, []);
+  */
+  
+  // 임시 데이터
+  const [stores] = useState<Store[]>([
+    { id: 1, name: '카페수월 강남점', address: '서울시 강남구 테헤란로 123', phone: '02-1234-5678', hours: '평일 08:00-22:00, 주말 10:00-20:00', status: 'open' },
+  ]);
 
   return (
     <AdminLayout>

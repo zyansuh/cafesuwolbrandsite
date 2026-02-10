@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { Plus, Trash2, Upload } from 'lucide-react';
+import { Trash2, Upload } from 'lucide-react';
 
 interface GalleryItem {
   id: number;
@@ -13,16 +13,23 @@ interface GalleryItem {
 }
 
 export default function GalleryManagement() {
+  // TODO: 갤러리 목록 API 호출
+  /*
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
-
+  
   useEffect(() => {
-    // TODO: 갤러리 목록 API 호출
-    setGalleryItems([
-      { id: 1, title: '시그니처 커피', imageUrl: '', category: '메뉴', createdAt: '2024-02-01' },
-      { id: 2, title: '카페 인테리어', imageUrl: '', category: '매장', createdAt: '2024-02-01' },
-      { id: 3, title: '브런치 메뉴', imageUrl: '', category: '메뉴', createdAt: '2024-01-28' },
-    ]);
+    fetch('YOUR_API_URL/admin/gallery')
+      .then(res => res.json())
+      .then(data => setGalleryItems(data));
   }, []);
+  */
+  
+  // 임시 데이터
+  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([
+    { id: 1, title: '시그니처 커피', imageUrl: '', category: '메뉴', createdAt: '2024-02-01' },
+    { id: 2, title: '카페 인테리어', imageUrl: '', category: '매장', createdAt: '2024-02-01' },
+    { id: 3, title: '브런치 메뉴', imageUrl: '', category: '메뉴', createdAt: '2024-01-28' },
+  ]);
 
   const handleDelete = (id: number) => {
     if (!confirm('삭제하시겠습니까?')) return;

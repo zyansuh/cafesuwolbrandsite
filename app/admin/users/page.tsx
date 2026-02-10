@@ -19,10 +19,6 @@ export default function UserManagement() {
   const [users, setUsers] = useState<User[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
   const fetchUsers = async () => {
     // TODO: 회원 목록 API 호출
     /*
@@ -39,6 +35,11 @@ export default function UserManagement() {
       { id: 4, name: '박민수', email: 'park@email.com', phone: '010-4567-8901', joinDate: '2023-12-10', totalOrders: 42, totalSpent: 356000, status: 'inactive' },
     ]);
   };
+
+  useEffect(() => {
+    fetchUsers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

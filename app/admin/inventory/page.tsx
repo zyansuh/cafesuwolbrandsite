@@ -33,10 +33,6 @@ export default function InventoryManagement() {
   const [selectedItem, setSelectedItem] = useState<InventoryItem | null>(null);
   const [stockHistory, setStockHistory] = useState<StockHistory[]>([]);
 
-  useEffect(() => {
-    fetchInventory();
-  }, []);
-
   const fetchInventory = async () => {
     // TODO: 재고 목록 API 호출
     /*
@@ -55,7 +51,11 @@ export default function InventoryManagement() {
     ]);
   };
 
-  const handleStockIn = async (itemId: number, quantity: number, reason: string) => {
+  useEffect(() => {
+    fetchInventory();
+  }, []);
+
+  const handleStockIn = async (itemId: number, quantity: number) => {
     // TODO: 재고 입고 API 호출
     /*
     await fetch(`YOUR_API_URL/admin/inventory/${itemId}/stock-in`, {
@@ -73,7 +73,7 @@ export default function InventoryManagement() {
     setSelectedItem(null);
   };
 
-  const handleStockOut = async (itemId: number, quantity: number, reason: string) => {
+  const handleStockOut = async (itemId: number, quantity: number) => {
     // TODO: 재고 출고 API 호출
     /*
     await fetch(`YOUR_API_URL/admin/inventory/${itemId}/stock-out`, {
@@ -91,7 +91,7 @@ export default function InventoryManagement() {
     setSelectedItem(null);
   };
 
-  const handleSave = async (formData: Partial<InventoryItem>) => {
+  const handleSave = async () => {
     // TODO: 재고 생성/수정 API 호출
     /*
     if (selectedItem) {
@@ -112,7 +112,7 @@ export default function InventoryManagement() {
     fetchInventory();
   };
 
-  const fetchStockHistory = async (itemId: number) => {
+  const fetchStockHistory = async () => {
     // TODO: 재고 히스토리 API 호출
     /*
     const response = await fetch(`YOUR_API_URL/admin/inventory/${itemId}/history`);
@@ -278,7 +278,9 @@ export default function InventoryManagement() {
                           <button
                             onClick={() => {
                               setSelectedItem(item);
-                              fetchStockHistory(item.id);
+                              // TODO: 실제 itemId를 API로 전송
+                              console.log('재고 히스토리 조회:', item.id);
+                              fetchStockHistory();
                               setModalType('history');
                             }}
                             className="p-2 text-purple-600 hover:bg-purple-50 rounded-lg transition-colors"
@@ -317,16 +319,8 @@ export default function InventoryManagement() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                const formData = new FormData(e.currentTarget);
-                handleSave({
-                  name: formData.get('name') as string,
-                  category: formData.get('category') as string,
-                  quantity: Number(formData.get('quantity')),
-                  unit: formData.get('unit') as string,
-                  minQuantity: Number(formData.get('minQuantity')),
-                  supplier: formData.get('supplier') as string,
-                  lastUpdated: new Date().toISOString().split('T')[0],
-                });
+                // TODO: 폼 데이터를 API로 전송
+                handleSave();
               }}
               className="space-y-4"
             >
@@ -400,7 +394,9 @@ export default function InventoryManagement() {
               onSubmit={(e) => {
                 e.preventDefault();
                 const formData = new FormData(e.currentTarget);
-                handleStockIn(selectedItem.id, Number(formData.get('quantity')), formData.get('reason') as string);
+                const reason = formData.get('reason') as string;
+                console.log('입고 사유:', reason); // TODO: API로 전송
+                handleStockIn(selectedItem.id, Number(formData.get('quantity')));
               }}
               className="space-y-4"
             >
@@ -450,11 +446,13 @@ export default function InventoryManagement() {
                 e.preventDefault();
                 const formData = new FormData(e.currentTarget);
                 const quantity = Number(formData.get('quantity'));
+                const reason = formData.get('reason') as string;
                 if (quantity > selectedItem.quantity) {
                   alert('출고 수량이 현재 재고보다 많습니다!');
                   return;
                 }
-                handleStockOut(selectedItem.id, quantity, formData.get('reason') as string);
+                console.log('출고 사유:', reason); // TODO: API로 전송
+                handleStockOut(selectedItem.id, quantity);
               }}
               className="space-y-4"
             >
@@ -542,7 +540,7 @@ export default function InventoryManagement() {
             </div>
             <div className="flex gap-3 pt-4">
               <button onClick={() => setModalType('edit')} className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">수정</button>
-              <button onClick={() => { fetchStockHistory(selectedItem.id); setModalType('history'); }} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">히스토리</button>
+              <button onClick={() => { console.log('재고 히스토리 조회:', selectedItem.id); fetchStockHistory(); setModalType('history'); }} className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">히스토리</button>
             </div>
           </div>
         </div>

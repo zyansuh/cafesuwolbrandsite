@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { Search, Eye } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 interface Order {
   id: string;
@@ -17,10 +17,6 @@ export default function OrderManagement() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<string>('all');
-
-  useEffect(() => {
-    fetchOrders();
-  }, []);
 
   const fetchOrders = async () => {
     // TODO: 주문 목록 API 호출
@@ -38,6 +34,11 @@ export default function OrderManagement() {
       { id: 'ORD-004', customerName: '박민수', items: '콜드브루', total: 5500, status: 'completed', createdAt: '2024-02-06 09:20' },
     ]);
   };
+
+  useEffect(() => {
+    fetchOrders();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const updateOrderStatus = async (orderId: string, newStatus: Order['status']) => {
     // TODO: 주문 상태 업데이트 API 호출

@@ -5,29 +5,29 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import { TrendingUp, Users, ShoppingCart, Package } from 'lucide-react';
 
 export default function AdminDashboard() {
+  // TODO: 대시보드 통계 API 호출
+  /*
   const [stats, setStats] = useState({
     totalSales: 0,
     totalOrders: 0,
     totalUsers: 0,
     lowStockItems: 0,
   });
-
+  
   useEffect(() => {
-    // TODO: 대시보드 통계 API 호출
-    /*
     fetch('YOUR_API_URL/admin/stats')
       .then(res => res.json())
       .then(data => setStats(data));
-    */
-    
-    // 임시 데이터
-    setStats({
-      totalSales: 2450000,
-      totalOrders: 156,
-      totalUsers: 342,
-      lowStockItems: 5,
-    });
   }, []);
+  */
+  
+  // 임시 데이터
+  const [stats] = useState({
+    totalSales: 2450000,
+    totalOrders: 156,
+    totalUsers: 342,
+    lowStockItems: 5,
+  });
 
   const statCards = [
     {

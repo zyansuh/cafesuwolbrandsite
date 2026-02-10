@@ -20,10 +20,6 @@ export default function MenuManagement() {
   const [showModal, setShowModal] = useState(false);
   const [editingItem, setEditingItem] = useState<MenuItem | null>(null);
 
-  useEffect(() => {
-    fetchMenuItems();
-  }, []);
-
   const fetchMenuItems = async () => {
     // TODO: 메뉴 목록 API 호출
     /*
@@ -40,6 +36,11 @@ export default function MenuManagement() {
       { id: 4, name: '말차 라떼', category: 'non-coffee', price: 6000, description: '프리미엄 일본산 말차', available: false },
     ]);
   };
+
+  useEffect(() => {
+    fetchMenuItems();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleDelete = async (id: number) => {
     if (!confirm('정말 삭제하시겠습니까?')) return;

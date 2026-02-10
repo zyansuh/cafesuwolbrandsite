@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { Plus, Pencil, Trash2, Eye } from 'lucide-react';
+import { Plus, Pencil, Trash2 } from 'lucide-react';
 
 interface Notice {
   id: number;
@@ -15,12 +15,6 @@ interface Notice {
 
 export default function NoticeManagement() {
   const [notices, setNotices] = useState<Notice[]>([]);
-  const [showModal, setShowModal] = useState(false);
-  const [editingNotice, setEditingNotice] = useState<Notice | null>(null);
-
-  useEffect(() => {
-    fetchNotices();
-  }, []);
 
   const fetchNotices = async () => {
     // TODO: 공지사항 목록 API 호출
@@ -29,6 +23,11 @@ export default function NoticeManagement() {
       { id: 2, title: '설 연휴 영업시간 안내', category: '공지', content: '설 연휴 영업시간...', createdAt: '2024-01-28', views: 89 },
     ]);
   };
+
+  useEffect(() => {
+    fetchNotices();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleDelete = (id: number) => {
     if (!confirm('삭제하시겠습니까?')) return;
@@ -42,7 +41,7 @@ export default function NoticeManagement() {
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold text-gray-900">공지사항 관리</h1>
           <button
-            onClick={() => setShowModal(true)}
+            onClick={() => console.log('TODO: 공지사항 추가 모달')}
             className="flex items-center gap-2 px-4 py-2 bg-amber-900 text-white rounded-lg hover:bg-amber-800"
           >
             <Plus className="w-5 h-5" />
