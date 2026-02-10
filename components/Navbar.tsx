@@ -36,6 +36,12 @@ export default function Navbar() {
                 {item.name}
               </a>
             ))}
+            <Link
+              href="/login"
+              className="px-5 py-2 text-amber-900 border border-amber-900 rounded-lg hover:bg-amber-900 hover:text-white transition-colors font-medium"
+            >
+              로그인
+            </Link>
           </div>
 
           {/* 모바일 메뉴 버튼 */}
@@ -69,6 +75,20 @@ export default function Navbar() {
                   {item.name}
                 </motion.a>
               ))}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navItems.length * 0.1 }}
+                className="pt-4"
+              >
+                <Link
+                  href="/login"
+                  className="block text-center py-3 px-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
+                  로그인
+                </Link>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
