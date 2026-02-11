@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { 
   LayoutDashboard, 
   Coffee, 
-  Package, 
   ShoppingCart, 
   Users, 
   Bell, 
@@ -21,7 +20,6 @@ import {
 const menuItems = [
   { name: '대시보드', href: '/admin/dashboard', icon: LayoutDashboard },
   { name: '메뉴 관리', href: '/admin/menu', icon: Coffee },
-  { name: '재고 관리', href: '/admin/inventory', icon: Package },
   { name: '주문 관리', href: '/admin/orders', icon: ShoppingCart },
   { name: '회원 관리', href: '/admin/users', icon: Users },
   { name: '공지사항', href: '/admin/notices', icon: Bell },

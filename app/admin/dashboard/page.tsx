@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { TrendingUp, Users, ShoppingCart, Package } from 'lucide-react';
+import { TrendingUp, Users, ShoppingCart } from 'lucide-react';
 
 export default function AdminDashboard() {
   // TODO: 대시보드 통계 API 호출
@@ -11,7 +11,6 @@ export default function AdminDashboard() {
     totalSales: 0,
     totalOrders: 0,
     totalUsers: 0,
-    lowStockItems: 0,
   });
   
   useEffect(() => {
@@ -26,7 +25,6 @@ export default function AdminDashboard() {
     totalSales: 2450000,
     totalOrders: 156,
     totalUsers: 342,
-    lowStockItems: 5,
   });
 
   const statCards = [
@@ -51,13 +49,6 @@ export default function AdminDashboard() {
       color: 'bg-purple-500',
       change: '+5.1%',
     },
-    {
-      title: '재고 부족',
-      value: `${stats.lowStockItems}개`,
-      icon: Package,
-      color: 'bg-red-500',
-      change: '주의 필요',
-    },
   ];
 
   return (
@@ -70,7 +61,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* 통계 카드 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {statCards.map((card) => (
             <div key={card.title} className="bg-white rounded-lg shadow p-6">
               <div className="flex items-center justify-between">
