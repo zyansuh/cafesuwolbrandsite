@@ -1,8 +1,16 @@
 'use client';
 
 /**
- * 푸터 컴포넌트
- * - 브랜드 정보, 바로가기 링크, SNS 아이콘
+ * Footer - 하단 푸터
+ *
+ * [역할]
+ * - 브랜드 정보: 카페수월 소개 문구
+ * - 바로가기: NAV_ITEMS와 동일 링크 (상세 페이지)
+ * - 소셜 미디어: Instagram, Facebook, YouTube (현재 #)
+ *
+ * [반응형]
+ * - grid-cols-1(모바일) → sm:2열 → md:3열
+ * - py-8 ~ py-10, px 반응형
  */
 
 import Link from 'next/link';
@@ -11,13 +19,13 @@ import { NAV_ITEMS } from '@/constants';
 
 export default function Footer() {
   return (
-    <footer className="bg-amber-950 text-amber-50 py-10 w-full flex justify-center">
-      <div className="w-full max-w-4xl mx-auto px-8 sm:px-12 md:px-16 lg:px-20 xl:px-24">
-        <div className="grid md:grid-cols-3 gap-8 mb-6">
+    <footer className="bg-amber-950 text-amber-50 py-8 sm:py-10 w-full flex justify-center">
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6">
           {/* 브랜드 정보 */}
           <div>
-            <h3 className="text-2xl font-bold mb-3 font-shilla">카페수월</h3>
-            <p className="text-amber-200 text-sm leading-relaxed">
+            <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 font-shilla">카페수월</h3>
+            <p className="text-amber-200 text-sm leading-relaxed break-words">
               커피를 마시고, 책을 읽고, 기억을 남깁니다.
               <br />
               지역 독립출판 플랫폼형 북카페
@@ -47,21 +55,21 @@ export default function Footer() {
             <div className="flex gap-3">
               <a
                 href="#"
-                className="w-10 h-10 bg-amber-800 rounded-full flex items-center justify-center hover:bg-amber-700 transition-colors"
+                className="w-10 h-10 sm:w-11 sm:h-11 bg-amber-800 rounded-full flex items-center justify-center hover:bg-amber-700 active:scale-95 transition-all"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-amber-800 rounded-full flex items-center justify-center hover:bg-amber-700 transition-colors"
+                className="w-10 h-10 sm:w-11 sm:h-11 bg-amber-800 rounded-full flex items-center justify-center hover:bg-amber-700 active:scale-95 transition-all"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-amber-800 rounded-full flex items-center justify-center hover:bg-amber-700 transition-colors"
+                className="w-10 h-10 sm:w-11 sm:h-11 bg-amber-800 rounded-full flex items-center justify-center hover:bg-amber-700 active:scale-95 transition-all"
                 aria-label="YouTube"
               >
                 <Youtube className="w-5 h-5" />

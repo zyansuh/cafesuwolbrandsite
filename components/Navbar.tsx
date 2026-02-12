@@ -1,8 +1,19 @@
 'use client';
 
 /**
- * 상단 네비게이션 바
- * - 고정(fixed) 위치, 반응형 모바일 메뉴
+ * Navbar - 상단 네비게이션 바
+ *
+ * [역할]
+ * - 고정(fixed) 상단, 로고(/) + 메뉴 링크
+ * - NAV_ITEMS 기반: About, Cafe, Books, Writers, Program, Journal, Store, Contact
+ *
+ * [반응형]
+ * - md 이상: 가로 메뉴 표시
+ * - md 미만: 햄버거 메뉴 → 아코디언 형식
+ *
+ * [스타일]
+ * - backdrop-blur, border-b
+ * - Link 사용 (Next.js 클라이언트 라우팅)
  */
 
 import { useState } from 'react';
@@ -15,13 +26,13 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
       <div className="max-w-4xl mx-auto py-3">
         <div className="flex items-center justify-between">
           {/* 로고 */}
           <Link
             href="/"
-            className="text-2xl font-bold text-amber-900 font-shilla"
+            className="text-xl sm:text-2xl font-bold text-amber-900 font-shilla"
           >
             카페수월
           </Link>

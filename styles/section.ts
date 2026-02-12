@@ -1,6 +1,14 @@
 /**
- * 섹션 공통 스타일 상수
- * - 홈페이지 각 섹션에서 일관된 레이아웃/간격 적용
+ * section - 섹션 공통 스타일 상수
+ *
+ * [사용처]
+ * - ExploreSection, AboutSection, GallerySection 등 홈/상세 페이지 섹션
+ *
+ * [contentPadding]
+ * - px-4 sm:px-6: 섹션 내부 좌우 패딩
+ *
+ * [animation]
+ * - duration, delayMultiplier: framer-motion 애니메이션 통일
  */
 
 export const section = {
