@@ -5,6 +5,7 @@
  * - 브랜드 정보, 바로가기 링크, SNS 아이콘
  */
 
+import Link from 'next/link';
 import { Instagram, Facebook, Youtube } from 'lucide-react';
 import { NAV_ITEMS } from '@/constants';
 
@@ -29,12 +30,12 @@ export default function Footer() {
             <ul className="space-y-1.5 text-sm">
               {NAV_ITEMS.map((item) => (
                 <li key={item.name}>
-                  <a
+                  <Link
                     href={item.href}
                     className="text-amber-200 hover:text-white transition-colors"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

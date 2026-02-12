@@ -29,7 +29,7 @@ export default function WritersSection() {
         />
 
         <div className="flex justify-center mb-6">
-          <a href="#contact" className={layout.button.primary}>
+          <a href="/contact" className={layout.button.primary}>
             입점 문의
           </a>
         </div>

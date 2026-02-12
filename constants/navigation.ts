@@ -9,12 +9,12 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { name: 'About 수월', href: '#about' },
-  { name: 'Cafe', href: '#cafe' },
-  { name: 'Books', href: '#books' },
-  { name: 'Writers', href: '#writers' },
-  { name: 'Program', href: '#program' },
-  { name: 'Journal', href: '#journal' },
-  { name: 'Store', href: '#store' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'About 수월', href: '/about' },
+  { name: 'Cafe', href: '/cafe' },
+  { name: 'Books', href: '/books' },
+  { name: 'Writers', href: '/writers' },
+  { name: 'Program', href: '/program' },
+  { name: 'Journal', href: '/journal' },
+  { name: 'Store', href: '/store' },
+  { name: 'Contact', href: '/contact' },
 ];

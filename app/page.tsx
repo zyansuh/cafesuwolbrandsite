@@ -1,20 +1,13 @@
 /**
- * 메인 홈페이지
- * - 섹션 구성: Hero → 수월이란? → 공간미리보기 → … → Contact
+ * 메인 홈페이지 (간소화)
+ * - Hero → 수월이란? → 둘러보기 링크 카드 → Footer
+ * - 상세 내용은 각 페이지(/about, /cafe 등)로 분리
  */
 
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/home/HeroSection';
 import SuwolIntroSection from '@/components/home/SuwolIntroSection';
-import GallerySection from '@/components/home/GallerySection';
-import BooksSection from '@/components/home/BooksSection';
-import ProgramSection from '@/components/home/ProgramSection';
-import AboutSection from '@/components/home/AboutSection';
-import CafeSection from '@/components/home/CafeSection';
-import WritersSection from '@/components/home/WritersSection';
-import JournalSection from '@/components/home/JournalSection';
-import StoreSection from '@/components/home/StoreSection';
-import ContactSection from '@/components/home/ContactSection';
+import ExploreSection from '@/components/home/ExploreSection';
 import Footer from '@/components/home/Footer';
 import { layout } from '@/styles';
 
@@ -28,15 +21,7 @@ export default function Home() {
         >
           <HeroSection />
           <SuwolIntroSection />
-          <GallerySection />
-          <BooksSection />
-          <ProgramSection />
-          <AboutSection />
-          <CafeSection />
-          <WritersSection />
-          <JournalSection />
-          <StoreSection />
-          <ContactSection />
+          <ExploreSection />
         </div>
       </main>
       <div className="w-full flex justify-center">

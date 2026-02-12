@@ -48,12 +48,12 @@ export default function HeroSection() {
           className="flex gap-4 justify-center flex-wrap"
         >
           <a
-            href="#gallery"
+            href="/gallery"
             className={`${layout.button.primary} shadow-sm`}
           >
             공간 둘러보기
           </a>
-          <a href="#books" className={layout.button.outline}>
+          <a href="/books" className={layout.button.outline}>
             이달의 책 보기
           </a>
         </motion.div>

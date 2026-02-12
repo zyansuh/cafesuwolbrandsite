@@ -29,13 +29,13 @@ export default function Navbar() {
           {/* 데스크톱 메뉴 */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6 flex-wrap justify-end">
             {NAV_ITEMS.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="text-gray-700 hover:text-amber-900 transition-colors font-medium text-sm"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -59,17 +59,16 @@ export default function Navbar() {
               className="md:hidden mt-4 pb-4"
             >
               {NAV_ITEMS.map((item, index) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="block py-3 text-gray-700 hover:text-amber-900 transition-colors font-medium border-b border-gray-100"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </motion.a>
+                <Link key={item.name} href={item.href} onClick={() => setIsOpen(false)}>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="block py-3 text-gray-700 hover:text-amber-900 transition-colors font-medium border-b border-gray-100"
+                  >
+                    {item.name}
+                  </motion.div>
+                </Link>
               ))}
             </motion.div>
           )}
