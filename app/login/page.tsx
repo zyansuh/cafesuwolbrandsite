@@ -59,7 +59,7 @@ export default function LoginPage() {
         {/* 로고 및 헤더 */}
         <div className="text-center">
           <Link href="/" className="inline-block">
-            <h1 className="text-3xl font-bold text-amber-900">카페수월</h1>
+            <h1 className="text-3xl font-bold text-amber-900 font-shilla">카페수월</h1>
             <p className="text-sm text-amber-700 mt-1">Cafe Suwol</p>
           </Link>
           <h2 className="mt-6 text-2xl font-bold text-gray-900">로그인</h2>

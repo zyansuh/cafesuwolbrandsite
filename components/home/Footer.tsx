@@ -1,49 +1,46 @@
 'use client';
 
+/**
+ * 푸터 컴포넌트
+ * - 브랜드 정보, 바로가기 링크, SNS 아이콘
+ */
+
 import { Instagram, Facebook, Youtube } from 'lucide-react';
+import { NAV_ITEMS } from '@/constants';
 
 export default function Footer() {
   return (
-    <footer className="bg-amber-950 text-amber-50 py-10">
-      <div className="w-full pl-12 pr-8 md:pl-16 md:pr-12 lg:pl-24 lg:pr-16 xl:pl-32 xl:pr-20">
+    <footer className="bg-amber-950 text-amber-50 py-10 w-full flex justify-center">
+      <div className="w-full max-w-4xl mx-auto px-8 sm:px-12 md:px-16 lg:px-20 xl:px-24">
         <div className="grid md:grid-cols-3 gap-8 mb-6">
           {/* 브랜드 정보 */}
           <div>
-            <h3 className="text-2xl font-bold mb-3">카페수월</h3>
+            <h3 className="text-2xl font-bold mb-3 font-shilla">카페수월</h3>
             <p className="text-amber-200 text-sm leading-relaxed">
-              일상의 여유를 담은 한 잔,<br />
-              특별한 순간을 만드는 공간
+              커피를 마시고, 책을 읽고, 기억을 남깁니다.
+              <br />
+              지역 독립출판 플랫폼형 북카페
             </p>
           </div>
 
-          {/* 바로가기 */}
+          {/* 바로가기 링크 */}
           <div>
             <h4 className="text-lg font-bold mb-3">바로가기</h4>
             <ul className="space-y-1.5 text-sm">
-              <li>
-                <a href="#about" className="text-amber-200 hover:text-white transition-colors">
-                  브랜드 소개
-                </a>
-              </li>
-              <li>
-                <a href="#menu" className="text-amber-200 hover:text-white transition-colors">
-                  메뉴
-                </a>
-              </li>
-              <li>
-                <a href="#gallery" className="text-amber-200 hover:text-white transition-colors">
-                  갤러리
-                </a>
-              </li>
-              <li>
-                <a href="#store" className="text-amber-200 hover:text-white transition-colors">
-                  매장 안내
-                </a>
-              </li>
+              {NAV_ITEMS.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="text-amber-200 hover:text-white transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* SNS */}
+          {/* SNS 링크 */}
           <div>
             <h4 className="text-lg font-bold mb-3">소셜 미디어</h4>
             <div className="flex gap-3">
@@ -72,6 +69,7 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* 저작권 */}
         <div className="border-t border-amber-800 pt-6 text-center text-amber-300 text-sm">
           <p>&copy; 2024 카페수월 Cafe Suwol. All rights reserved.</p>
         </div>

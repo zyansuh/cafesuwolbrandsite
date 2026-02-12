@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "카페수월 - Cafe Suwol",
-  description: "일상의 여유를 담은 한 잔, 특별한 순간을 만드는 공간",
+  title: "카페수월 - Cafe Suwol | 지역 독립출판 플랫폼형 북카페",
+  description: "커피를 마시고, 책을 읽고, 기억을 남깁니다. 대전 북카페 수월",
 };
 
 export default function RootLayout({
@@ -24,9 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
         {children}
       </body>
     </html>

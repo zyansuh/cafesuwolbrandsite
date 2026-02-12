@@ -1,49 +1,49 @@
 'use client';
 
 /**
- * Store 섹션
- * - 드립백, 굿즈, 독립출판 온라인 판매
+ * Journal 섹션
+ * - 블로그 역할, 브랜딩 강화, SEO
  */
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { STORE_ITEMS } from '@/constants';
+import { JOURNAL_CATEGORIES } from '@/constants';
 import { section } from '@/styles';
 import SectionHeader from '@/components/ui/SectionHeader';
 
-export default function StoreSection() {
+export default function JournalSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
     <section
       ref={ref}
-      id="store"
-      className={`${section.padding.default} bg-amber-50 w-full overflow-visible`}
+      id="journal"
+      className={`${section.padding.default} bg-white w-full overflow-visible`}
     >
       <div className={`w-full ${section.contentPadding}`}>
         <SectionHeader
-          title="Store"
-          subtitle="드립백 · 굿즈 · 독립출판 온라인 판매"
+          title="Journal"
+          subtitle="블로그 역할 + 브랜딩 강화 · SEO"
         />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: section.animation.duration, delay: 0.2 }}
-          className={`grid md:grid-cols-3 ${section.gridGap.large}`}
+          className={`grid grid-cols-2 md:grid-cols-4 ${section.gridGap.default}`}
         >
-          {STORE_ITEMS.map((item, index) => (
+          {JOURNAL_CATEGORIES.map((item, index) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`${section.card.paddingLarge} rounded-lg bg-white border border-amber-100 hover:border-amber-300 transition-all text-center group`}
+              className={`${section.card.paddingLarge} rounded-lg bg-amber-50 border border-amber-100 hover:border-amber-300 transition-all text-center group`}
             >
-              <item.icon className="w-12 h-12 text-amber-900 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="font-bold text-amber-950">{item.title}</h3>
+              <item.icon className="w-10 h-10 text-amber-900 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+              <h3 className="font-bold text-amber-950 text-sm">{item.title}</h3>
             </motion.div>
           ))}
         </motion.div>

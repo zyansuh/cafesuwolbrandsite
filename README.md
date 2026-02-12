@@ -174,7 +174,7 @@ const padding = layout.padding.page;
 - 📱 **모바일 메뉴** - 햄버거 메뉴 및 애니메이션 효과
 - 🎯 **스무스 스크롤** - 네비게이션 클릭 시 섹션 이동
 - 🎨 **통합 디자인 시스템** - 일관된 컬러 및 레이아웃 관리
-- ⬅️ **비대칭 레이아웃** - 왼쪽 여백이 더 큰 모던한 디자인
+- 📐 **중앙 정렬 레이아웃** - 균등한 좌우 패딩으로 화면 중앙 집중
 
 ### 인증 시스템
 
@@ -298,7 +298,7 @@ import { colors } from '@/styles';
 export default function NewSection() {
   return (
     <section className="py-20 bg-white">
-      <div className="w-full pl-12 pr-8 md:pl-16 md:pr-12 lg:pl-24 lg:pr-16 xl:pl-32 xl:pr-20">
+      <div className="max-w-6xl mx-auto px-8 lg:px-12 xl:px-16 2xl:px-24">
         {/* 컨텐츠 */}
       </div>
     </section>
@@ -308,9 +308,9 @@ export default function NewSection() {
 
 ### 스타일 가이드
 
-- **비대칭 레이아웃**: 왼쪽 여백이 더 큼 (모던한 디자인)
+- **중앙 정렬 레이아웃**: max-w-6xl mx-auto로 화면 중앙 배치
 - **컬러 관리**: `styles/colors.ts`에서 중앙 관리
-- **일관된 패딩**: `pl-12 pr-8 md:pl-16 md:pr-12 lg:pl-24 lg:pr-16 xl:pl-32 xl:pr-20`
+- **중앙 정렬 패딩**: `max-w-6xl mx-auto px-8 lg:px-12 xl:px-16 2xl:px-24` (데스크톱 중앙 정렬 강화)
 
 ### 애니메이션 패턴
 
@@ -360,25 +360,6 @@ fetch('YOUR_API_URL/auth/login', {
 ### 관리자 API
 
 ```typescript
-// 재고 관리
-// 목록 조회
-GET /admin/inventory
-
-// 재고 추가
-POST /admin/inventory
-{ name, category, quantity, unit, minQuantity, supplier }
-
-// 재고 입고
-POST /admin/inventory/:id/stock-in
-{ quantity, reason, note }
-
-// 재고 출고
-POST /admin/inventory/:id/stock-out
-{ quantity, reason, note }
-
-// 재고 히스토리
-GET /admin/inventory/:id/history
-
 // 메뉴 관리
 GET /admin/menu
 POST /admin/menu
@@ -396,6 +377,16 @@ GET /admin/users
 GET /admin/notices
 POST /admin/notices
 DELETE /admin/notices/:id
+
+// 매장 관리
+GET /admin/stores
+POST /admin/stores
+PUT /admin/stores/:id
+
+// 갤러리 관리
+GET /admin/gallery
+POST /admin/gallery
+DELETE /admin/gallery/:id
 ```
 
 ## 🚀 배포

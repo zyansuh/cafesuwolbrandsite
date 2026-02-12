@@ -27,7 +27,7 @@ export default function StoreManagement() {
   
   // 임시 데이터
   const [stores] = useState<Store[]>([
-    { id: 1, name: '카페수월 강남점', address: '서울시 강남구 테헤란로 123', phone: '02-1234-5678', hours: '평일 08:00-22:00, 주말 10:00-20:00', status: 'open' },
+    { id: 1, name: '카페수월', address: '대전광역시 가양로68번길 2', phone: '02-1234-5678', hours: '평일 08:00-22:00, 주말 10:00-20:00', status: 'open' },
   ]);
 
   return (
